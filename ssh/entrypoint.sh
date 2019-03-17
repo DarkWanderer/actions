@@ -19,4 +19,4 @@ echo run: ssh-add
 eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
 
-ssh -v -o 'StrictHostKeyChecking=no' -tt -p ${PORT:-22} $USER@$HOST "$*"
+ssh -o 'StrictHostKeyChecking=no' -tt -p ${PORT:-22} $USER@$HOST "$*"
