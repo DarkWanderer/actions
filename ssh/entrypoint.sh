@@ -18,7 +18,7 @@ chmod 600 "$SSH_PATH/deploy_key.pub"
 eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
 
-ssh-keyscan $HOST-p ${PORT:-22} >> "$SSH_PATH/known_hosts"
+ssh-keyscan $HOST -p ${PORT:-22} >> "$SSH_PATH/known_hosts"
 cat "$SSH_PATH/known_hosts"
 
-ssh -v -A -tt -p ${PORT:-22} $USER@$HOST "$*"
+ssh -v -tt -p ${PORT:-22} $USER@$HOST "$*"
