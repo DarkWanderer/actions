@@ -19,5 +19,6 @@ eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
 
 ssh-keyscan $HOST >> "$SSH_PATH/known_hosts"
+cat "$SSH_PATH/known_hosts"
 
-ssh -A -tt -p ${PORT:-22} $USER@$HOST "$*"
+ssh -v -A -tt -p ${PORT:-22} $USER@$HOST "$*"
