@@ -19,5 +19,5 @@ echo run: ssh-add
 eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
 
-GIT_SSH_COMMAND="ssh -o 'StrictHostKeyChecking=no'"
+git config --global core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 git push ssh://$USER@$HOST:${PORT:-22}/opt/deploy/$REPO
