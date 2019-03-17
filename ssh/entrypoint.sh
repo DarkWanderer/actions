@@ -17,8 +17,7 @@ chmod 600 "$SSH_PATH/deploy_key.pub"
 
 eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
-ssh-add -l
 
-ssh-keygen -R $HOST
+ssh-keyscan $HOST >> "$SSH_PATH/known_hosts"
 
 ssh -A -tt -o 'StrictHostKeyChecking=no' -p ${PORT:-22} $USER@$HOST "$*"

@@ -17,9 +17,7 @@ chmod 600 "$SSH_PATH/deploy_key.pub"
 
 eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
-ssh-add -l
 
-ssh-keygen -R $HOST
+ssh-keyscan $HOST >> "$SSH_PATH/known_hosts"
 
-echo git push ssh://$USER@$HOST:${PORT:-22}/opt/deploy/$REPO
 git push ssh://$USER@$HOST:${PORT:-22}/opt/deploy/$REPO
