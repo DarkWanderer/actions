@@ -20,4 +20,4 @@ eval $(ssh-agent)
 ssh-add "$SSH_PATH/deploy_key"
 
 git config --global core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-git push ssh://$USER@$HOST:${PORT:-22}/opt/deploy/$REPO
+git push ssh://$USER@$HOST:${PORT:-22}$REPO_PATH
