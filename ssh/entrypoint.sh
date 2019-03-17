@@ -11,7 +11,7 @@ chmod 700 "$SSH_PATH"
 chmod 600 "$SSH_PATH/known_hosts"
 
 eval $(ssh-agent)
-ssh-add <($PRIVATE_KEY)
+echo $PRIVATE_KEY|ssh-add -
 ssh-add -l
 
 ssh-keygen -R $HOST
