@@ -20,4 +20,4 @@ ssh-add "$SSH_PATH/deploy_key"
 
 ssh-keyscan $HOST >> "$SSH_PATH/known_hosts"
 
-ssh -A -tt -o 'StrictHostKeyChecking=no' -p ${PORT:-22} $USER@$HOST "$*"
+ssh -A -tt -p ${PORT:-22} $USER@$HOST "$*"
