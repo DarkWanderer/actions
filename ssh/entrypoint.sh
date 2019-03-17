@@ -7,11 +7,16 @@ SSH_PATH="$HOME/.ssh"
 mkdir "$SSH_PATH"
 touch "$SSH_PATH/known_hosts"
 
+echo "$PRIVATE_KEY" > "$SSH_PATH/deploy_key"
+echo "$PUBLIC_KEY" > "$SSH_PATH/deploy_key.pub"
+
 chmod 700 "$SSH_PATH"
 chmod 600 "$SSH_PATH/known_hosts"
+chmod 600 "$SSH_PATH/deploy_key"
+chmod 600 "$SSH_PATH/deploy_key.pub"
 
 eval $(ssh-agent)
-echo $PRIVATE_KEY|ssh-add -
+ssh-add "$SSH_PATH/deploy_key"
 ssh-add -l
 
 ssh-keygen -R $HOST
